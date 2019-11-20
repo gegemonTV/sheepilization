@@ -8,7 +8,7 @@ def fielding(h,w):
     for i in range(h):
         field.append([])
         for j in range(w):
-            field[i].append(' ')
+            field[i].append('  ')
     return field
 
 field = fielding(a,b)
@@ -22,18 +22,35 @@ grass_percent/=100
 grass_counter=0
 
 def ING(percent, h, w,counter, char):
-    if
-    while counter<int(h*w*percent):
-        h_rand = randint(0,h-1)
-        w_rand = randint(0,w-1)
-        if field[h_rand][w_rand] == ' ':
-            field[h_rand][w_rand] = char
-            counter+=1
-        else:
-            pass
+    if char == '2' or char == '3':
+        while counter<int(h*w*percent):
+            rand_direction = randint(0,3)
+            h_rand = randint(0,h-1)
+            w_rand = randint(0,w-1)
+            if field[h_rand][w_rand] == '  ':
+                if rand_direction == 0:
+                    field[h_rand][w_rand] = f'{char}^'
+                if rand_direction == 1:
+                    field[h_rand][w_rand] = f'{char}>'
+                if rand_direction == 2:
+                    field[h_rand][w_rand] = f'{char}v'
+                if rand_direction == 3:
+                    field[h_rand][w_rand] = f'{char}<'
+                counter+=1
+            else:
+                pass
+    elif char == '1 ':
+        while counter<int(h*w*percent):
+            h_rand = randint(0,h-1)
+            w_rand = randint(0,w-1)
+            if field[h_rand][w_rand] == '  ':
+                field[h_rand][w_rand] = char
+            else:
+                pass
+            counter+=1       
     return counter
 
-grass_counter=ING(grass_percent,a,b,grass_counter,'1')
+grass_counter=ING(grass_percent,a,b,grass_counter,'1 ')
 '''
 for i in range(a):
     print()
